@@ -11,7 +11,7 @@
 
 @media (min-width: 769px) {
   .nested-fields {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   a.btn.btn-danger.btn-xs.remove-nested {
@@ -51,6 +51,11 @@
   }
 }
 
+@media (min-width: 768px) {
+  .navbar {
+      border-radius: 0;
+  }
+}
 @media (min-width: 768px) and (max-width: 775px) {
 
   .panel.panel-success {
@@ -193,4 +198,17 @@
   font-weight: 700;
   font-size: 13px;
   display: block;
+}
+
+.navbar-default {
+  background-color: #2FA4E7;
+  border-color: #1995dc;
+}
+
+.navbar-default .navbar-brand {
+  color: #fff;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #fff;
 }
