@@ -10,8 +10,8 @@ class Client < ActiveRecord::Base
   has_many :hospitalizations, :dependent => :destroy
   has_many :medications, :dependent => :destroy
   has_many :allergies, :dependent => :destroy
-  
-  validates :first_name, :last_name, :height, :weight, :address, :home_phone, :alcohol_consumption, :smoking_habit, presence: true
+
+  validates :first_name, :last_name, :height, :weight, :address, :home_phone, :alcohol_consumption, :smoking_habit, presence: true, on: :create, on: :update
   validates :middle_initial, length: { maximum: 1 }
 
   accepts_nested_attributes_for :complaints, reject_if: :all_blank, allow_destroy: true

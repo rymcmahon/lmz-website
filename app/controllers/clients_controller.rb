@@ -6,7 +6,7 @@ class ClientsController < ApplicationController
   end
 
   def show
-    @client = Client.find(params[:id])
+    @client = current_client || current_client.admin?
     @height_feet = @client.height_feet(@client.height)
     @height_inches = @client.height_inches(@client.height)
   end
@@ -24,6 +24,13 @@ class ClientsController < ApplicationController
 
   def edit
     @client = Client.find(params[:id])
+    @client.complaints.build
+    @client.surgeries.build
+    @client.medications.build
+    @client.hospitalizations.build
+    @client.allergies.build
+    @client.build_personal_disease_history
+    @client.build_family_disease_history
   end
 
   def create
@@ -81,9 +88,9 @@ class ClientsController < ApplicationController
         personal_disease_history_attributes: [ :id, :heart_disease, :cancer,
           :diabetes, :hypertension, :thyroid_disorder, :hepatitis,
           :asthma_allergies, :seizures, :stroke, :neurological_disorders,
-          :substance_abuse, :other, :_destroy], family_disease_history_attributes: 
+          :substance_abuse, :other, :_destroy], family_disease_history_attributes:
           [ :id, :heart_disease, :cancer, :diabetes, :hypertension, :thyroid_disorder,
             :hepatitis, :asthma_allergies, :seizures, :stroke, :neurological_disorders,
-            :substance_abuse, :other, :_destroy])
+            :substance_abuse, :other, :_destroy ])
     end
 end
